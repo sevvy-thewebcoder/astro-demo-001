@@ -1,0 +1,22 @@
+---
+import ProductCard from "../react/ProductCard";
+import { products } from "../../db/data";
+---
+
+<div class="product-card-grid">
+	{
+		products.map((product) => (
+			<a href={`/products/${product.id}`}>
+				<ProductCard product={product} />
+			</a>
+		))
+	}
+</div>
+
+<style>
+	.product-card-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		gap: 1rem;
+	}
+</style>

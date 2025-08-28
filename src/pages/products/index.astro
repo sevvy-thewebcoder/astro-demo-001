@@ -1,0 +1,24 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import ProductCardCarousel from "../../components/react/ProductCardCarousel";
+import { products } from "../../db/data";
+---
+
+<Layout title="Products">
+	<h2>Products Page</h2>
+	<div class="product-carousel__grid">
+		{
+			products.map((product) => (
+				<ProductCardCarousel product={product} client:only="react" />
+			))
+		}
+	</div>
+</Layout>
+
+<style>
+	.product-carousel__grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+		gap: 1rem;
+	}
+</style>

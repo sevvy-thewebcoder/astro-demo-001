@@ -1,0 +1,27 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import ProductDetails from "../../components/astro/ProductDetails.astro";
+import { products } from "../../db/data";
+
+export const prerender = false;
+
+export async function getStaticPaths() {
+	return products.map((product) => ({
+		params: { id: product.id.toString() },
+	}));
+}
+
+const { id } = Astro.params;
+const product = products.find((p) => p.id.toString() === id);
+
+if (!product) {
+	throw new Error(`Product with id ${id} not found`);
+}
+---
+
+<Layout title={product.title}>
+	<h2>Product Details for {product.title}</h2>
+	<div class="product-wrapper">
+		<ProductDetails product={product} />
+	</div>
+</Layout>
