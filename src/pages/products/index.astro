@@ -1,6 +1,7 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import ProductCardCarousel from "../../components/react/ProductCardCarousel";
+import ProductCC from "../../components/react/ProductCC";
 import { products } from "../../db/data";
 ---
 
@@ -9,7 +10,7 @@ import { products } from "../../db/data";
 	<div class="product-carousel__grid">
 		{
 			products.map((product) => (
-				<ProductCardCarousel product={product} client:only="react" />
+				<ProductCC product={product} client:only="react" />
 			))
 		}
 	</div>

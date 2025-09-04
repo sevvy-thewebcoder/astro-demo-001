@@ -3,6 +3,7 @@
 	width: 100%;
 	aspect-ratio: 9 / 16;
 
+	/* Hover (Desktop/Cursor Devices) */
 	&:hover .product-card__coverImage-wrapper {
 		width: 0;
 		height: 0;
@@ -17,6 +18,16 @@
 		transition: opacity 0.5s ease;
 	}
 
+	/* Tap-to-reveal (Touchscreen Devices) */
+	&.show-controls .product-card__coverImage-wrapper {
+		opacity: 0;
+	}
+
+	&.show-controls .product-card__carousel-controls {
+		visibility: visible;
+		opacity: 1;
+	}
+
 	.product-card__carousel-controls {
 		position: absolute;
 		top: 0;
@@ -29,15 +40,15 @@
 		visibility: hidden;
 		opacity: 0;
 		z-index: 2;
-	}
 
-	.product-card__carousel-button {
-		background: transparent;
-		border: none;
-		padding: 0;
-		font-family: "Courier New", Courier, monospace;
-		text-transform: uppercase;
-		cursor: pointer;
+		.product-card__carousel-button {
+			background: transparent;
+			border: none;
+			padding: 0;
+			font-family: "Courier New", Courier, monospace;
+			text-transform: uppercase;
+			cursor: pointer;
+		}
 	}
 
 	.product-card__image-carousel {
@@ -46,6 +57,7 @@
 		height: 100%;
 		display: flex;
 		overflow: hidden;
+		cursor: pointer;
 
 		.product-card__coverImage-wrapper {
 			position: absolute;
@@ -84,6 +96,7 @@
 				);
 				pointer-events: none;
 			}
+
 			.product-card__image {
 				position: relative;
 				width: 100%;
